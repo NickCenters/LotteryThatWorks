@@ -28,7 +28,7 @@ func Lottery(){
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weeks.count
     }
-    
+    //my mine is on fire
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IDCell")!
         let text = weeks[indexPath.row]
