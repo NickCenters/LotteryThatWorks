@@ -1,20 +1,40 @@
-//
-//  ViewController.swift
-//  LotteryThatWorks
-//
-//  Created by Nicholas Centers on 3/15/21.
-//  Copyright © 2021 Nicholas Centers. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    var numbers: [[Int]] = []
+    var holder : [Int] = []
+    var weeks : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        Lottery()
     }
 
-
+func Lottery(){
+    for i in 0...51{
+        weeks.append("its week \(i + 1)")
+    for _ in 0...4{
+        let ran = Int.random(in: 1...70)
+        holder.append(ran)
+            }
+        numbers.append(holder)
+        for _ in 0...4{
+        holder.remove(at: 0)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weeks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IDCell")!
+        let text = weeks[indexPath.row]
+        cell.textLabel?.text = "\(text)"
+        let detailText = numbers[indexPath.row]
+        cell.detailTextLabel?.text = "\(detailText)"
+        return cell
+    }
 }
-
